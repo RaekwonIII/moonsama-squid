@@ -17,6 +17,10 @@ export async function getOrCreateOwner(
       totalCollectionNfts: [],
     })
   }
+  if ( !Array.isArray(owner.totalCollectionNfts) ) {
+    ctx.log.error("totalCollectionNfts is not an array");
+    owner.totalCollectionNfts = [];
+  }
   owners.save(owner)
   return owner
 }
